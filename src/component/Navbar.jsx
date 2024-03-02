@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import UserContext from '../context/UserContext'
 
-function Navbar({handalstoreData , showstore}) {
+function Navbar() {
+
+  const {showstore , setShowStore} = useContext(UserContext);
+  function handalstoreData()
+  {
+    setShowStore((prev) => !prev);
+  }
   return (
     <div className='w-[1280px] mx-auto flex justify-between py-4'>
          <div className='flex gap-2'>

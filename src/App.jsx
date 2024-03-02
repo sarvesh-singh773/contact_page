@@ -3,7 +3,7 @@ import Data from "./component/Data"
 import FormBox from "./component/FormBox"
 import HeadingText from "./component/HeadingText"
 import Navbar from "./component/Navbar"
-
+import UserContext from "./context/UserContext";
 
 function App() {
 
@@ -14,29 +14,18 @@ function App() {
   
   const [showstore , setShowStore] = useState(false);
   
-  function setObj(item)
-  {
-    let newarr = [...objArr , item];
-    setObjArr(newarr);
-  }  
 
-  function handalstoreData()
-  {
-    setShowStore((prev) => !prev);
-  }
   return (
-    <>
-     <Navbar handalstoreData={handalstoreData} showstore={showstore}/>
+    <UserContext.Provider value={{showstore , setShowStore , objArr , setObjArr}}>
+     <Navbar />
       {
-        showstore ? <Data obj={objArr} /> :<div>
+        showstore ? <Data /> :<div>
         <HeadingText />
-        <FormBox setObj={setObj}/>
+        <FormBox />
         </div> 
       }
      
-    
-     
-    </>
+    </UserContext.Provider>
   )
 }
 

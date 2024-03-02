@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PrintData from './PrintData'
+import UserContext from '../context/UserContext'
 
-function Data({obj}) {
+function Data() {
+
+  const {objArr} = useContext(UserContext);
+
   return (
     <div className='w-[1080px] mx-auto border-2 p-5'>
         <div className='flex justify-between text-[25px] list-none border-b-2 border-[black]'>
@@ -10,7 +14,7 @@ function Data({obj}) {
           <li>Text</li>
         </div>
       {
-        obj.map((item , index) =>(
+        objArr.map((item , index) =>(
             <PrintData key={index} item={item}/>
         ))
       }

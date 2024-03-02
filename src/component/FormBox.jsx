@@ -1,19 +1,20 @@
 
+import { useContext} from 'react';
 import ButtonBox from './ButtonBox'
+import UserContext from '../context/UserContext';
 
-function FormBox({setObj}){
+function FormBox(){
+
+    const {objArr,setObjArr} = useContext(UserContext)
 
     function onsubmit(event)
     {
         event.preventDefault();
-        // console.log(event);
-        // console.log(event.target[0].value);
-        // console.log(event.target[1].value);
-        // console.log(event.target[2].value);
-
+    
         let newobj = {Name : event.target[0].value , Email : event.target[1].value , Text : event.target[2].value}
 
-        setObj(newobj);
+        let newarr = [...objArr , newobj];
+        setObjArr(newarr);
 
         event.target[0].value = "";
         event.target[1].value = "";
